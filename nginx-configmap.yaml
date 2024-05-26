@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-index
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>NGINX</title>
+    </head>
+    <body>
+      <h1>Welcome to NGINX!</h1>
+      <p>Worker Node: {{ .NodeName }}</p>
+      <p>Pod IP: {{ .PodIP }}</p>
+    </body>
+    </html>
