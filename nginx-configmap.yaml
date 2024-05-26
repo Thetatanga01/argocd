@@ -9,9 +9,10 @@ data:
     <head>
       <title>NGINX</title>
     </head>
-    <body>
-      <h1>Welcome to NGINX!</h1>
+    <body><center>
+      <h1>{{ .ClusterName }}</h1>
       <p>Worker Node: {{ .NodeName }}</p>
       <p>Pod IP: {{ .PodIP }}</p>
+      </center>
     </body>
     </html>
