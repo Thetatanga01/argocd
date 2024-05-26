@@ -7,7 +7,12 @@ data:
     <!DOCTYPE html>
     <html>
     <head>
-      <title>NGINX</title>
+      <title>{{ .ClusterName }}</title>
+      <style>
+        body {
+          font-size: 18px;
+        }
+      </style>
     </head>
     <body><center>
       <h1>{{ .ClusterName }}</h1>
