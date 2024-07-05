@@ -1,6 +1,7 @@
 apiVersion: v2
-name: redis
+name: rsm-redis
 description: A Helm chart for Kubernetes
+kubeVersion: < 1.30.0-0
 
 # A chart can be either an 'application' or a 'library' chart.
 #

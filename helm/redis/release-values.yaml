@@ -1,8 +1,7 @@
 appName: redis
-namespace: redis
+namespace: release
 replicaCount: 3
-password: "RsmRedis!*?34"
-cluster: 
+password: "Redis1234"
 
 image:
   repository: redis
@@ -27,8 +26,6 @@ spec:
               secretKeyRef:
                 name: redis-secret
                 key: REDIS_PASSWORD
-          - name: TZ
-            value: Europe/Istanbul   
         command: [ "sh", "-c" ]
         args:
           - |
@@ -57,18 +54,16 @@ spec:
             mountPath: /etc/redis/
           - name: config
             mountPath: /tmp/redis/
-          - name: logging
-            mountPath: /vvar/log/redis/
       containers:
         command: ["redis-server"]
         args: ["/etc/redis/redis.conf"]
         resources:
           requests:
-            memory: "3Gi"
-            cpu: '1'
+            memory: "1Gi"
+            cpu: "500m"
           limits:
-            memory: "4Gi"
-            cpu: '2'
+            memory: "2Gi"
+            cpu: "500m"
         ports:
           - name: redis
             containerPort: 6379
@@ -79,8 +74,6 @@ spec:
           - name: redis-config
             mountPath: /etc/redis/
       volumes:
-        - name: logging
-          emptyDir: {}
         - name: redis-config
           emptyDir: {}
         - name: config
@@ -101,7 +94,7 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: "20Gi"
+            storage: "2Gi"
         storageClassName: longhorn   
 
 # nindent 10
@@ -133,6 +126,26 @@ ingress:
           pathType: ImplementationSpecific
   tls: []
   
+
+
+# nindent 20
+traefik:
+  redis:
+    ingress:
+      routes:
+        - match: HostSNI(`*`)
+          services:
+            - name: redis-haproxy
+              port: 6379
+  haproxy:
+    ingress:
+      routes:
+        - kind: Rule
+          match: Host(`redis-haproxy-release.rsm-dev-cloud.vodafone.local`)
+          services:
+            - name: redis-haproxy
+              port: 8080
+
 # nindent 21
 haproxy:
   appName: haproxy
@@ -172,10 +185,10 @@ haproxy:
           resources:
             requests:
               memory: "1Gi"
-              cpu: "500m"
+              cpu: "300m"
             limits:
-              memory: "2Gi"
-              cpu: "900m"
+              memory: "1Gi"
+              cpu: "500m"
           ports:
             - containerPort: 8080
             - containerPort: 6379
@@ -194,7 +207,6 @@ haproxy:
   podAnnotations: {}
   podSecurityContext: {}
   initContainers: {}
-
 
 # nindent 22
 sentinel:
@@ -258,11 +270,11 @@ sentinel:
           args: ["/etc/redis/sentinel.conf"]
           resources:
             requests:
-              memory: "1Gi"
-              cpu: "500m"
+              memory: "512Mi"
+              cpu: "300m"
             limits:
-              memory: "2Gi"
-              cpu: "800m"
+              memory: "768Mi"
+              cpu: "300m"
           ports:
           - containerPort: 5000
             name: sentinel
