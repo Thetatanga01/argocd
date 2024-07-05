@@ -64,10 +64,10 @@ spec:
         args: ["/etc/redis/redis.conf"]
         resources:
           requests:
-            memory: "3Gi"
+            memory: "1Gi"
             cpu: '1'
           limits:
-            memory: "4Gi"
+            memory: "1Gi"
             cpu: '2'
         ports:
           - name: redis
@@ -101,7 +101,7 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: "20Gi"
+            storage: "5Gi"
         storageClassName: longhorn   
 
 # nindent 10
@@ -172,10 +172,10 @@ haproxy:
           resources:
             requests:
               memory: "1Gi"
-              cpu: "500m"
+              cpu: "300m"
             limits:
-              memory: "2Gi"
-              cpu: "900m"
+              memory: "1Gi"
+              cpu: "500m"
           ports:
             - containerPort: 8080
             - containerPort: 6379
@@ -261,7 +261,7 @@ sentinel:
               memory: "1Gi"
               cpu: "500m"
             limits:
-              memory: "2Gi"
+              memory: "1Gi"
               cpu: "800m"
           ports:
           - containerPort: 5000
