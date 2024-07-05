@@ -30,8 +30,6 @@ spec:
       volumes:
         {{- toYaml .Values.spec.template.spec.volumes | nindent 17 }}
       serviceAccountName: {{ include "redis.serviceAccountName" . }}
-      # initContainers:
-      #   {{- toYaml .Values.spec.template.spec.initContainers | nindent 16 }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
