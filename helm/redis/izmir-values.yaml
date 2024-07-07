@@ -5,7 +5,7 @@ traefik:
       routes:
         - match: HostSNI(`*`)
           services:
-            - name: redis-haproxy
+            - name: redis-haproxy-write
               port: 6379
               terminationDelay: 60000        
               nativeLB: true
@@ -14,7 +14,7 @@ traefik:
     ingress:
       routes:
         - kind: Rule
-          match: Host(`redis-haproxy.rsm-izm.vodafone.local`)
+          match: Host(`redis-haproxy-izmir.guven.uk`)
           services:
-            - name: redis-haproxy
+            - name: redis-haproxy-dashboard
               port: 8080     
