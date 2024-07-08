@@ -1,0 +1,17 @@
+namespaces: rabbitmq
+
+traefik:
+  ingress:
+    routes:
+      - kind: Rule
+        match: Host(`rabbitmq-ui-istanbul.guven.uk`)
+        services:
+          - name: rabbitmq
+            port: 15672
+            
+  ingressTCP:
+    routes:
+      - match: HostSNI(`*`)
+        services:
+          - name: rabbitmq
+            port: 5672

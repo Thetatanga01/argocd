@@ -1,0 +1,40 @@
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{ .Values.appName }}
+spec:
+  serviceName: {{ .Values.service.name }}
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app:  {{ .Values.appName }}
+  template:
+    metadata:
+      labels:
+        app:  {{ .Values.appName }}
+    spec:
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      serviceAccountName: rabbitmq-service-account  
+      volumes:
+        {{- toYaml .Values.volumes | nindent 17 }}
+      initContainers:
+        {{- toYaml .Values.initContainers | nindent 18 }}
+      containers:
+        - name: {{ .Values.appName }}
+          env: 
+            {{- toYaml .Values.containers.env | nindent 16 }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            {{- toYaml .Values.containers.ports | nindent 17 }}
+          volumeMounts:
+            {{- toYaml .Values.containers.volumeMounts | nindent 17 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.containers.readinessProbe | nindent 17 }}
+          livenessProbe:
+            {{- toYaml .Values.containers.livenessProbe | nindent 17 }}
