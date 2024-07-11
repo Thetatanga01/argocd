@@ -792,7 +792,7 @@ service:
   # -- Cannot contain type, selector or ports entries.
   spec: {}
   # externalTrafficPolicy: Cluster
-  # loadBalancerIP: "1.2.3.4"
+    loadBalancerIP: "10.10.10.32"
   # clusterIP: "2.3.4.5"
   loadBalancerSourceRanges: []
   # - 192.168.0.1/32
