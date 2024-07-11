@@ -11,6 +11,8 @@ data:
     ## Cluster formation. See https://www.rabbitmq.com/cluster-formation.html to
     learn more.
 
+    management.path_prefix = /rabbitui
+
     cluster_formation.peer_discovery_backend  = rabbit_peer_discovery_k8s
 
     cluster_formation.k8s.host = kubernetes.default.svc.cluster.local

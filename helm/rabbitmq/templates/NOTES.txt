@@ -20,3 +20,7 @@
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:$CONTAINER_PORT
 {{- end }}
+
+
+MUSTAFA GUVEN
+1. https://istanbul.guven.uk/rabbitui seklinde pathprefix kullanarak ui'i gormek icin config-map icerisindeki rabbitmq.conf dosyasina management.path_prefix = /rabbitui satiri eklenmeli.
