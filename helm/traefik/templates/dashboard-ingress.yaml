@@ -27,7 +27,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: {{ .Values.traefik.dashboard.route.match }}
+    - match: Host(`traefik-ist.guven.local`,`istanbul.guven.uk`)
       kind: Rule
       middlewares:
         - name: traefik-dashboard-basicauth
