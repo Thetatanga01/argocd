@@ -5,4 +5,4 @@ traefik:
       
 
 spec: 
-  loadBalancerIP: "10.10.10.32"      
+  loadBalancerIP: "10.10.10.31"      
