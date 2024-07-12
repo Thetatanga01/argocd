@@ -1,7 +1,7 @@
 traefik:
   dashboard:
     route:
-      match: "Host(`traefik-ist.guven.local`,`istanbul.guven.uk`)"
+      match: "Host(`istanbul.guven.local`,`istanbul.guven.uk`)"
       
 
 service:
