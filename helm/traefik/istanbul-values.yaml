@@ -3,3 +3,6 @@ traefik:
     route:
       match: "Host(`traefik-ist.guven.local`,`istanbul.guven.uk`)"
       
+
+spec: 
+  loadBalancerIP: "10.10.10.32"      
