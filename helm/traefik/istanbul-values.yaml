@@ -6,4 +6,4 @@ traefik:
 
 service:
   spec: 
-    loadBalancerIP: "10.10.10.211"      
+    loadBalancerIP: "10.10.10.32"      
