@@ -11,7 +11,7 @@ data:
     ## Cluster formation. See https://www.rabbitmq.com/cluster-formation.html to
     learn more.
 
-    management.path_prefix = /rabbitui
+    management.path_prefix = /rabbit
 
     cluster_formation.peer_discovery_backend  = rabbit_peer_discovery_k8s
 

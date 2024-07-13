@@ -4,7 +4,7 @@ traefik:
   ingress:
     routes:
       - kind: Rule
-        match: Host(`izmir.guven.uk`) && PathPrefix(`/rabbitui`)
+        match: Host(`izmir.guven.uk`) && PathPrefix(`/rabbit`)
         services:
           - name: rabbitmq
             port: 15672

@@ -14,7 +14,7 @@ traefik:
     ingress:
       routes:
         - kind: Rule
-          match: Host(`izmir.guven.uk`) && PathPrefix(`/redisui`)
+          match: Host(`izmir.guven.uk`) && PathPrefix(`/redis`)
           services:
             - name: redis-haproxy
               port: 8080     
