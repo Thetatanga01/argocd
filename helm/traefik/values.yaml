@@ -633,14 +633,17 @@ ports:
   rabbitmq:
     port: 5672
     protocol: TCP
+    expose: true
 
   redis:
     port: 6379
     protocol: TCP
+    expose: true
 
   elasticsearch:
     port: 9200
     protocol: TCP
+    expose: true
 
   web:
     ## -- Enable this entrypoint as a default entrypoint. When a service doesn't explicitly set an entrypoint it will only use this entrypoint.
