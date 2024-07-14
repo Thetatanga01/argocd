@@ -1,0 +1,9 @@
+# nindent 20
+traefik:
+  loki:
+    ingress:
+      routes:
+        - match: HostSNI(`*`)
+          services:
+            - name: loki-stack-istanbul
+              port: 3100
