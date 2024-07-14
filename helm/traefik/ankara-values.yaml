@@ -1,0 +1,9 @@
+traefik:
+  dashboard:
+    route:
+      match: "Host(`ankara.guven.local`,`ankara.guven.uk`)"
+      
+
+service:
+  spec: 
+    loadBalancerIP: "172.16.0.30"      

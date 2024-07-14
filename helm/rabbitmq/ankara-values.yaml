@@ -1,0 +1,17 @@
+namespaces: rabbitmq
+
+traefik:
+  ingress:
+    routes:
+      - kind: Rule
+        match: Host(`ankara.guven.uk`) && PathPrefix(`/rabbit`)
+        services:
+          - name: rabbitmq
+            port: 15672
+            
+  ingressTCP:
+    routes:
+      - match: HostSNI(`*`)
+        services:
+          - name: rabbitmq
+            port: 5672
