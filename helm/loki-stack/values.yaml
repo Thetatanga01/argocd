@@ -7,6 +7,10 @@ loki:
   enabled: true
   isDefault: true
   url: http://{{(include "loki.serviceName" .)}}:{{ .Values.loki.service.port }}
+  persistance: 
+    enabled: true
+    size: 1Gi
+    storageClassName: longhorn
   readinessProbe:
     httpGet:
       path: /ready
@@ -34,7 +38,7 @@ fluent-bit:
   enabled: false
 
 grafana:
-  enabled: false
+  enabled: true
   sidecar:
     datasources:
       label: ""
@@ -45,7 +49,7 @@ grafana:
     tag: 10.3.3
 
 prometheus:
-  enabled: false
+  enabled: true
   isDefault: false
   url: http://{{ include "prometheus.fullname" .}}:{{ .Values.prometheus.server.service.servicePort }}{{ .Values.prometheus.server.prefixURL }}
   datasource:

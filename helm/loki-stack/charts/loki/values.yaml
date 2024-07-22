@@ -150,10 +150,10 @@ nodeSelector: {}
 ## - create a pv which above 10Gi and has same namespace with loki
 ## - keep storageClassName same with below setting
 persistence:
-  enabled: true
+  enabled: false
   accessModes:
   - ReadWriteOnce
-  size: 30Gi
+  size: 10Gi
   labels: {}
   annotations: {}
   # selector:
@@ -161,7 +161,7 @@ persistence:
   #     app.kubernetes.io/name: loki
   # subPath: ""
   # existingClaim:
-  storageClassName: longhorn
+  # storageClassName:
 
 ## Pod Labels
 podLabels: {}
