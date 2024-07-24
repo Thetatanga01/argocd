@@ -1143,15 +1143,23 @@ extraObjects: []
   #         name: adminPassword
 
 
-grafana:
-  ingress:
-    routes:
-      - kind: Rule
-        match: Host(`istanbul.guven.uk`) && PathPrefix(`/grafana`)
-        services:
-          - name: loki-stack-istanbul-grafana
-            namespace: loki-stack
-            port: 80
-        middlewares:
-          - name: strip-grafana
-            namespace: loki-stack
+# grafana:
+#   ingress:
+#     routes:
+#       - kind: Rule
+#         match: Host(`istanbul.guven.uk`) && PathPrefix(`/grafana`)
+#         services:
+#           - name: loki-stack-istanbul-grafana
+#             namespace: loki-stack
+#             port: 80
+#         middlewares:
+#           - name: strip-grafana
+#             namespace: loki-stack
+
+instances:
+  loki-stack-izmir:
+    host: "izmir.guven.uk"
+    serviceName: "loki-stack-izmir-grafana"
+  loki-stack-istanbul:
+    host: "istanbul.guven.uk"
+    serviceName: "loki-stack-istanbul-grafana"

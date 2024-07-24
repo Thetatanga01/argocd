@@ -19,4 +19,21 @@ spec:
   entryPoints:
     - websecure
   routes:  
-    {{- toYaml .Values.grafana.ingress.routes | nindent 4 }} 
+    - match: |
+            {{- if eq .Release.Name "loki-stack-izmir" -}}
+            Host(`{{ .Values.instances.loki-stack-izmir.host }}`) && PathPrefix(`grafana`)
+            {{- else if eq .Release.Name "loki-stack-istanbul" -}}
+            Host(`{{ .Values.instances.loki-stack-istanbul.host }}`) && PathPrefix(`grafana`)
+            {{- end }}
+      kind: Rule
+      services:
+        - name: |
+            {{- if eq .Release.Name "loki-stack-izmir" -}}
+            {{ .Values.instances.loki-stack-izmir.serviceName }}
+            {{- else if eq .Release.Name "loki-stack-istanbul" -}}
+            {{ .Values.instances.loki-stack-istanbul.serviceName }}
+            {{- end }}
+          port: 80
+      middlewares:
+        - name: strip-grafana
+          namespace: loki-stack
