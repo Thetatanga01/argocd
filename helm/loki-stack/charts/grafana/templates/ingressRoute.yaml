@@ -22,11 +22,11 @@ spec:
     - websecure
   routes:  
     - match: |
-            {{- if eq .Release.Name "loki-stack-izmir" -}}
-            Host(`{{ .Values.instances.loki-stack-izmir.host }}`) && PathPrefix(`grafana`)
-            {{- else if eq .Release.Name "loki-stack-istanbul" -}}
-            Host(`{{ .Values.instances.loki-stack-istanbul.host }}`) && PathPrefix(`grafana`)
-            {{- end }}
+        {{- if eq .Release.Name "loki-stack-izmir" }}
+        Host(`{{ .Values.instances.loki-stack-izmir.host }}`) && PathPrefix(`/grafana`)
+        {{- else if eq .Release.Name "loki-stack-istanbul" }}
+        Host(`{{ .Values.instances.loki-stack-istanbul.host }}`) && PathPrefix(`/grafana`)
+        {{- end }}            
       kind: Rule
       services:
         - name: |
