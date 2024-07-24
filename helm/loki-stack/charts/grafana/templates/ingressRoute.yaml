@@ -38,6 +38,7 @@ spec:
             {{ .Values.instances.istanbul.serviceName }}
             {{- end }}
           port: 80
+          namespace: loki-stack
       middlewares:
         - name: strip-grafana
           namespace: loki-stack
