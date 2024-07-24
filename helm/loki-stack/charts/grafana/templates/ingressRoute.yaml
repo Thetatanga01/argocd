@@ -31,15 +31,14 @@ spec:
         {{- end }}
       kind: Rule
       services:
-        port: 80
-        namespace: loki-stack      
         - name: |
             {{- if contains "izmir" .Release.Name }}
             {{ .Values.instances.izmir.serviceName }}
             {{- else if contains "istanbul" .Release.Name }}
             {{ .Values.instances.istanbul.serviceName }}
             {{- end }}
+          port: 80
+          namespace: loki-stack
       middlewares:
-        namespace: loki-stack
         - name: strip-grafana
-          
+          namespace: loki-stack
