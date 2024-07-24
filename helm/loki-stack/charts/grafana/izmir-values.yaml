@@ -11,5 +11,3 @@ traefik:
         middlewares:
           - name: strip-grafana
             namespace: loki-stack
-            
- 
