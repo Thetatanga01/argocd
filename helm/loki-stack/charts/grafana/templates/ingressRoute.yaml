@@ -1,0 +1,22 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-grafana
+  namespace: loki-stack
+spec:
+  stripPrefix:
+    prefixes:
+      - "/grafana"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana-dashboard
+  namespace: loki-stack
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:  
+    {{- toYaml .Values.traefik.ingress.routes | nindent 20 }} 

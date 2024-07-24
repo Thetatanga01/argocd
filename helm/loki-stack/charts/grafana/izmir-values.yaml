@@ -1,0 +1,16 @@
+namespaces: loki-stack
+
+traefik:
+  ingress:
+    routes:
+      - kind: Rule
+        match: Host(`izmir.guven.uk`) && PathPrefix(`/grafana`)
+        services:
+          - name: loki-stack-izmir-grafana
+            namespace: loki-stack
+            port: 80
+        middlewares:
+          - name: strip-grafana
+            namespace: loki-stack
+            
+ 
