@@ -13,6 +13,8 @@ kind: IngressRoute
 metadata:
   name: grafana-dashboard
   namespace: loki-stack
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Name }}  
   annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
