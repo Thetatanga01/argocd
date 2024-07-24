@@ -21,7 +21,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: |
+    - match: 
         {{- if contains "izmir" .Release.Name }}
         Host(`{{ .Values.instances.izmir.host }}`) && PathPrefix(`/grafana`)
         {{- else if contains "istanbul" .Release.Name }}
@@ -31,7 +31,7 @@ spec:
         {{- end }}
       kind: Rule
       services:
-        - name: |
+        - name: 
             {{- if contains "izmir" .Release.Name }}
             {{ .Values.instances.izmir.serviceName }}
             {{- else if contains "istanbul" .Release.Name }}
