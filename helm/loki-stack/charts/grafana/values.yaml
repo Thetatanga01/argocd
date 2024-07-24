@@ -1157,9 +1157,9 @@ extraObjects: []
 #             namespace: loki-stack
 
 instances:
-  loki-stack-izmir:
+  izmir:
     host: "izmir.guven.uk"
     serviceName: "loki-stack-izmir-grafana"
-  loki-stack-istanbul:
+  istanbul:
     host: "istanbul.guven.uk"
     serviceName: "loki-stack-istanbul-grafana"

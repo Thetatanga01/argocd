@@ -20,20 +20,22 @@ metadata:
 spec:
   entryPoints:
     - websecure
-  routes:  
+  routes:
     - match: |
-        {{- if eq .Release.Name "loki-stack-izmir" }}
-        Host(`{{ .Values.instances.loki-stack-izmir.host }}`) && PathPrefix(`/grafana`)
-        {{- else if eq .Release.Name "loki-stack-istanbul" }}
-        Host(`{{ .Values.instances.loki-stack-istanbul.host }}`) && PathPrefix(`/grafana`)
-        {{- end }}            
+        {{- if contains "izmir" .Release.Name }}
+        Host(`{{ .Values.instances.izmir.host }}`) && PathPrefix(`/grafana`)
+        {{- else if contains "istanbul" .Release.Name }}
+        Host(`{{ .Values.instances.istanbul.host }}`) && PathPrefix(`/grafana`)
+        {{- else }}
+        Host(`default.guven.uk`) && PathPrefix(`/grafana`)
+        {{- end }}
       kind: Rule
       services:
         - name: |
-            {{- if eq .Release.Name "loki-stack-izmir" -}}
-            {{ .Values.instances.loki-stack-izmir.serviceName }}
-            {{- else if eq .Release.Name "loki-stack-istanbul" -}}
-            {{ .Values.instances.loki-stack-istanbul.serviceName }}
+            {{- if contains "izmir" .Release.Name }}
+            {{ .Values.instances.izmir.serviceName }}
+            {{- else if contains "istanbul" .Release.Name }}
+            {{ .Values.instances.istanbul.serviceName }}
             {{- end }}
           port: 80
       middlewares:
