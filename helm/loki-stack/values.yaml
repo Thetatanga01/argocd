@@ -47,6 +47,16 @@ grafana:
       maxLines: 1000
   image:
     tag: 10.3.3
+  routes:
+    - kind: Rule
+      match: Host(`istanbul.guven.uk`) && PathPrefix(`/grafana`)
+      services:
+        - name: loki-stack-istanbul-grafana
+          namespace: loki-stack
+          port: 80
+      middlewares:
+        - name: strip-grafana
+          namespace: loki-stack    
 
 prometheus:
   enabled: true
