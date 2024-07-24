@@ -26,8 +26,8 @@ spec:
         Host(`{{ .Values.instances.izmir.host }}`) && PathPrefix(`/grafana`)
         {{- else if contains "istanbul" .Release.Name }}
         Host(`{{ .Values.instances.istanbul.host }}`) && PathPrefix(`/grafana`)
-        {{- else }}
-        Host(`default.guven.uk`) && PathPrefix(`/grafana`)
+        {{- else if contains "ankara" .Release.Name }}
+        Host(`{{ .Values.instances.ankara.host }}`) && PathPrefix(`/grafana`)
         {{- end }}
       kind: Rule
       services:
@@ -36,6 +36,8 @@ spec:
             {{ .Values.instances.izmir.serviceName }}
             {{- else if contains "istanbul" .Release.Name }}
             {{ .Values.instances.istanbul.serviceName }}
+            {{- else if contains "ankara" .Release.Name }}
+            {{ .Values.instances.ankara.serviceName }}
             {{- end }}
           port: 80
           namespace: loki-stack
