@@ -19,4 +19,4 @@ spec:
   entryPoints:
     - websecure
   routes:  
-    {{- toYaml .Values.grafana.ingress.routes | nindent 4 }} 
+    {{- toYaml .Values.loki.grafana.ingress.routes | nindent 4 }} 
