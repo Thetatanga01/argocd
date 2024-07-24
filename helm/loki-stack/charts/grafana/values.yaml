@@ -1150,9 +1150,9 @@ loki:
     ingress:
       routes:
         - kind: Rule
-          match: Host(`izmir.guven.uk`) && PathPrefix(`/grafana`)
+          match: Host(`istanbul.guven.uk`) && PathPrefix(`/grafana`)
           services:
-            - name: loki-stack-izmir-grafana
+            - name: loki-stack-istanbul-grafana
               namespace: loki-stack
               port: 80
           middlewares:
