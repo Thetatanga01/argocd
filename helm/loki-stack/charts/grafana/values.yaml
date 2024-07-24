@@ -1145,7 +1145,7 @@ extraObjects: []
 
 
 
-traefik:
+grafana:
   ingress:
     routes:
       - kind: Rule
