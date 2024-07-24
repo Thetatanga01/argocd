@@ -19,4 +19,4 @@ spec:
   entryPoints:
     - websecure
   routes:  
-    {{- toYaml .Values.traefik.ingress.routes | nindent 20 }} 
+    {{- toYaml .Values.traefik.ingress.routes | nindent 4 }} 
