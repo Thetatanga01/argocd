@@ -685,7 +685,8 @@ grafana.ini:
   grafana_net:
     url: https://grafana.net
   server:
-    domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ else }}''{{ end }}"
+    root_url: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
+    #domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ .Values.ingress.hosts | first }}{{ else }}''{{ end }}"
 ## grafana Authentication can be enabled with the following values on grafana.ini
  # server:
       # The full public facing url you use in browser, used for redirects and emails
