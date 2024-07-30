@@ -1778,11 +1778,4 @@ metrics:
     ##       summary: PostgreSQL replication is lagging by {{ "{{ $value }}" }} hour(s).
     ##
     rules: []
-  
-traefik:  
-  ingressTCP:
-    routes:
-      - match: HostSNI(`*`)
-        services:
-          - name: postgres
-            port: 5672
+
