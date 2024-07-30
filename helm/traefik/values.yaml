@@ -651,7 +651,7 @@ ports:
     protocol: TCP
     expose: true
 
-  postgresql:
+  postgres:
     port: 5432
     protocol: TCP
     expose: true    
