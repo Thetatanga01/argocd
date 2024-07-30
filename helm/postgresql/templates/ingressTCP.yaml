@@ -8,5 +8,7 @@ spec:
   entryPoints:
     - postgres
   routes:  
-    {{- toYaml .Values.traefik.ingressTCP.routes | nindent 10 }}
-    
+    - match: HostSNI(`*`)
+      services:
+        - name: postgres
+          port: 5672
