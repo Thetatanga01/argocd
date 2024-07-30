@@ -651,6 +651,11 @@ ports:
     protocol: TCP
     expose: true
 
+  postgresql:
+    port: 5432
+    protocol: TCP
+    expose: true    
+
   web:
     ## -- Enable this entrypoint as a default entrypoint. When a service doesn't explicitly set an entrypoint it will only use this entrypoint.
     # asDefault: true
