@@ -51,6 +51,7 @@ data:
       mode tcp
       balance first
       option tcp-check
+      option tcpka 
       tcp-check send AUTH\ {{ .Values.password }}\r\n
       tcp-check expect string +OK
       tcp-check send PING\r\n
@@ -59,7 +60,9 @@ data:
       tcp-check expect string role:master
       tcp-check send QUIT\r\n
       tcp-check expect string +OK
-      default-server  check resolvers kubedns inter 1s downinter 1s fastinter 1s fall 1 rise 3 maxconn 330 no-agent-check on-error mark-down
+      # default-server  check resolvers kubedns inter 1s downinter 1s fastinter 1s fall 1 rise 3 maxconn 330 no-agent-check on-error mark-down
+      default-server  check resolvers kubedns inter 5s downinter 3s fastinter 3s fall 3 rise 2 maxconn 500 no-agent-check on-error mark-down
+
       server redis-0 redis-0.{{ .Values.appName }}.{{ .Values.namespace }}.svc.cluster.local:6379
       server redis-1 redis-1.{{ .Values.appName }}.{{ .Values.namespace }}.svc.cluster.local:6379
       server redis-2 redis-2.{{ .Values.appName }}.{{ .Values.namespace }}.svc.cluster.local:6379
