@@ -16,7 +16,7 @@ traefik:
       routes:
         - match: HostSNI(`*`)
           services:
-            - name: redis
+            - name: redis-single
               port: 16379
               terminationDelay: 60000        
               nativeLB: true              
