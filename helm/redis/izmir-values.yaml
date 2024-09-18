@@ -1,14 +1,14 @@
 # nindent 20
-traefik:
-  redis:
-    ingress:
-      routes:
-        - match: HostSNI(`*`)
-          services:
-            - name: redis-haproxy
-              port: 6379
-              terminationDelay: 60000        
-              nativeLB: true
+# traefik:
+#   redis:
+#     ingress:
+#       routes:
+#         - match: HostSNI(`*`)
+#           services:
+#             - name: redis-haproxy
+#               port: 6379
+#               terminationDelay: 60000        
+#               nativeLB: true
 
 traefik:
   redis:
