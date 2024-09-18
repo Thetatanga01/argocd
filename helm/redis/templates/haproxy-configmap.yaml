@@ -51,7 +51,7 @@ data:
       mode tcp
       balance first
       option tcp-check
-      option tcpka 
+      # option tcpka 
       tcp-check send AUTH\ {{ .Values.password }}\r\n
       tcp-check expect string +OK
       tcp-check send PING\r\n
