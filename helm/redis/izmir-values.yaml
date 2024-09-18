@@ -10,6 +10,17 @@ traefik:
               terminationDelay: 60000        
               nativeLB: true
 
+traefik:
+  redis:
+    ingress:
+      routes:
+        - match: HostSNI(`*`)
+          services:
+            - name: redis
+              port: 16379
+              terminationDelay: 60000        
+              nativeLB: true              
+
   haproxy:
     ingress:
       routes:
