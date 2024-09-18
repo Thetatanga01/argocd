@@ -646,6 +646,11 @@ ports:
     protocol: TCP
     expose: true
 
+  redis-single:
+    port: 16379
+    protocol: TCP
+    expose: true    
+
   elasticsearch:
     port: 9200
     protocol: TCP
