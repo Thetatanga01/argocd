@@ -50,17 +50,19 @@ data:
     backend redis-primary
       mode tcp
       balance first
-      option tcp-check
-      # option tcpka 
-      tcp-check send AUTH\ {{ .Values.password }}\r\n
-      tcp-check expect string +OK
-      tcp-check send PING\r\n
-      tcp-check expect string +PONG
-      tcp-check send info\ replication\r\n
-      tcp-check expect string role:master
-      tcp-check send QUIT\r\n
-      tcp-check expect string +OK
+      # option tcp-check
+      option tcpka 
+
+      # tcp-check send AUTH\ {{ .Values.password }}\r\n
+      # tcp-check expect string +OK
+      # tcp-check send PING\r\n
+      # tcp-check expect string +PONG
+      # tcp-check send info\ replication\r\n
+      # tcp-check expect string role:master
+      # tcp-check send QUIT\r\n
+      # tcp-check expect string +OK
       # default-server  check resolvers kubedns inter 1s downinter 1s fastinter 1s fall 1 rise 3 maxconn 330 no-agent-check on-error mark-down
+
       default-server  check resolvers kubedns inter 5s downinter 3s fastinter 3s fall 3 rise 2 maxconn 500 no-agent-check on-error mark-down
 
       server redis-0 redis-0.{{ .Values.appName }}.{{ .Values.namespace }}.svc.cluster.local:6379
