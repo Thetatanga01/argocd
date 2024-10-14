@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: traefik-external 
 spec:
   entryPoints:
-    - rabbitmq
+    - hazelcast
   routes:  
     {{- toYaml .Values.traefik.ingressTCP.routes | nindent 10 }}
     
