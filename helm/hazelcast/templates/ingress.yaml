@@ -1,4 +1,15 @@
 apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-hazelcast
+  namespace: hazelcast
+spec:
+  stripPrefix:
+    prefixes:
+      - "/hazelcast"
+---
+
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: {{ .Values.appName }}-mancenter

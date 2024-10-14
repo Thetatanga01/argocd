@@ -1,0 +1,17 @@
+namespaces: hazelcast
+
+traefik:
+  ingress:
+    routes:
+      - kind: Rule
+        match: Host(`istanbul.guven.uk`) && PathPrefix(`/hazelcast`)
+        services:
+          - name: hazelcast-istanbul-mancenter
+            port: 8080
+            
+  ingressTCP:
+    routes:
+      - match: HostSNI(`*`)
+        services:
+          - name: hazelcast-istanbul
+            port: 5701
