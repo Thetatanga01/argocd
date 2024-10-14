@@ -1,12 +1,11 @@
 apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRouteTCP
+kind: IngressRoute
 metadata:
-  name: {{ .Values.appName }}-app
+  name: {{ .Values.appName }}-mngmnt
   annotations: 
     kubernetes.io/ingress.class: traefik-external 
 spec:
   entryPoints:
-    - rabbitmq
+    - websecure
   routes:  
-    {{- toYaml .Values.traefik.ingressTCP.routes | nindent 10 }}
-    
+    {{- toYaml .Values.traefik.ingress.routes | nindent 20 }} 
