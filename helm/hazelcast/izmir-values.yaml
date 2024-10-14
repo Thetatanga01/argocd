@@ -1,13 +1,13 @@
 namespaces: hazelcast
 
 traefik:
-  ingress:
-    routes:
-      - kind: Rule
-        match: Host(`izmir.guven.uk`) && PathPrefix(`/hazelcast`)
-        services:
-          - name: hz-hazelcast-mancenter
-            port: 9443
+  # ingress:
+  #   routes:
+  #     - kind: Rule
+  #       match: Host(`izmir.guven.uk`) && PathPrefix(`/hazelcast`)
+  #       services:
+  #         - name: hz-hazelcast-mancenter
+  #           port: 9443
             
   ingressTCP:
     routes:
