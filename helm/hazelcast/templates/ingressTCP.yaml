@@ -10,5 +10,5 @@ spec:
   routes:  
     - match: HostSNI(`*`)
       services:
-        - name: hazelcast
+        - name: hz-hazelcast
           port: 5701
