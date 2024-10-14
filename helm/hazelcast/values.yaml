@@ -434,7 +434,7 @@ mancenter:
   # Hazelcast Management Center Service properties
   service:
     # type defines the Kubernetes service type ('ClusterIP', 'LoadBalancer', or 'NodePort')
-    type: LoadBalancer
+    type: ClusterIP
     # port is the Kubernetes service port
     port: 8080
     # service https port
@@ -509,7 +509,7 @@ externalAccess:
   service:
     ## Service type. Allowed values: LoadBalancer or NodePort
     ##
-    type: LoadBalancer
+    type: ClusterIP
     # # Array of load balancer IPs for each Hazelcast pod. Length must be the same as memberCount
     # # Example:
     # loadBalancerIPs:
