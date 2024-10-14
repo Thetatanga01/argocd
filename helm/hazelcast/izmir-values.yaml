@@ -7,7 +7,7 @@ traefik:
         match: Host(`izmir.guven.uk`) && PathPrefix(`/hazelcast`)
         services:
           - name: hazelcast-izmir-mancenter
-            port: 9443
+            port: 8080
             
   ingressTCP:
     routes:
