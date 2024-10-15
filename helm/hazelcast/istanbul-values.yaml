@@ -10,7 +10,9 @@ traefik:
             port: 8080
         middlewares:
           - name: strip-hazelcast
-            namespace: hazelcast                 
+            namespace: hazelcast  
+          - name: traefik-dashboard-basicauth
+            namespace: traefik                           
             
   ingressTCP:
     routes:
