@@ -301,6 +301,8 @@ jet:
 
 # Hazelcast Management Center application properties
 mancenter:
+  security:
+    enabled: false
   # enabled is a flag to enable Management Center application
   enabled: true
   ## Hazelcast Management Center image version
