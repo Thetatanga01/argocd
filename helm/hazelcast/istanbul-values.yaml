@@ -8,6 +8,9 @@ traefik:
         services:
           - name: hazelcast-istanbul-mancenter
             port: 8080
+        middlewares:
+          - name: strip-hazelcast
+            namespace: hazelcast                 
             
   ingressTCP:
     routes:
@@ -15,3 +18,4 @@ traefik:
         services:
           - name: hazelcast-istanbul
             port: 5701
+       
