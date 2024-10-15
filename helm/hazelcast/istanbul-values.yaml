@@ -7,10 +7,12 @@ traefik:
         match: Host(`istanbul.guven.uk`) && PathPrefix(`/hazelcast`)
         services:
           - name: hazelcast-istanbul-mancenter
-            port: 8080
+            port: 443
         middlewares:
           - name: strip-hazelcast
-            namespace: hazelcast                      
+            namespace: hazelcast   
+          - name: add-x-forwarded-proto
+            namespace: hazelcast                                
             
   ingressTCP:
     routes:

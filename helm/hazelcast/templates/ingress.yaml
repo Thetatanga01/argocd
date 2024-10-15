@@ -10,6 +10,20 @@ spec:
 ---
 
 apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: add-x-forwarded-proto
+  namespace: hazelcast
+spec:
+  headers:
+    customRequestHeaders:
+      X-Forwarded-Proto: "https"
+      Connection: "Upgrade"
+      Upgrade: "websocket"
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: {{ .Values.appName }}-mancenter
