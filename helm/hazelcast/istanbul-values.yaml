@@ -4,15 +4,10 @@ traefik:
   ingress:
     routes:
       - kind: Rule
-        match: Host(`istanbul.guven.uk`) && PathPrefix(`/hazelcast`)
+        match: Host(`hazelcast.guven.uk`)
         services:
           - name: hazelcast-istanbul-mancenter
             port: 8080
-        middlewares:
-          - name: strip-hazelcast
-            namespace: hazelcast   
-          - name: add-x-forwarded-proto
-            namespace: hazelcast                                
             
   ingressTCP:
     routes:
