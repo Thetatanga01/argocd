@@ -1,0 +1,11 @@
+namespaces: ollama
+
+traefik:
+  ingress:
+    routes:
+      - kind: Rule
+        match: Host(`izmir.guven.uk`) && PathPrefix(`/ollama`)
+        services:
+          - name: ollama
+            port: 11434
+          
