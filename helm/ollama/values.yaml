@@ -151,23 +151,15 @@ service:
 
 # Configure the ingress resource that allows you to access the
 ingress:
-  # -- Enable ingress controller resource
-  enabled: false
-
-  # -- IngressClass that will be used to implement the Ingress (Kubernetes 1.18+)
-  className: ""
-
-  # -- Additional annotations for the Ingress resource.
-  annotations: {}
-    # kubernetes.io/ingress.class: traefik
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-
-  # The list of hostnames to be covered with this ingress record.
+  enabled: true
+  className: "traefik"
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    #traefik.ingress.kubernetes.io/router.middlewares: "ollama-strip-prefix@kubernetescrd"
   hosts:
-    - host: ollama.local
+    - host: izmir.guven.uk
       paths:
-        - path: /
+        - path: /ollama
           pathType: Prefix
 
   # --  The tls configuration for hostnames to be covered with this ingress record.
