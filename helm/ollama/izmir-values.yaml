@@ -6,6 +6,6 @@ traefik:
       - kind: Rule
         match: Host(`izmir.guven.uk`) && PathPrefix(`/ollama`)
         services:
-          - name: ollama
+          - name: ollama-izmir
             port: 11434
           
