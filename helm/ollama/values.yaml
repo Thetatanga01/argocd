@@ -74,16 +74,18 @@ ollama:
           #        3g.40gb: 1
 
   models:
-    #  - mistral
+    # -- List of models to pull at container startup
+    # The more you add, the longer the container will take to start if models are not present
     pull:
-      - llama3
+      - llama2
+      - mistral
+    # pull: []
 
     # -- List of models to load in memory at container startup
-    # run:
-    #  - llama2
-    #  - mistral
-    run: 
-      - llama3
+    run:
+      - llama2
+      - mistral
+    # run: []
 
   # -- Add insecure flag for pulling at container startup
   insecure: false
@@ -149,15 +151,23 @@ service:
 
 # Configure the ingress resource that allows you to access the
 ingress:
-  enabled: true
-  className: "traefik-external"
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-    #traefik.ingress.kubernetes.io/router.middlewares: "ollama-strip-prefix@kubernetescrd"
+  # -- Enable ingress controller resource
+  enabled: false
+
+  # -- IngressClass that will be used to implement the Ingress (Kubernetes 1.18+)
+  className: ""
+
+  # -- Additional annotations for the Ingress resource.
+  annotations: {}
+    # kubernetes.io/ingress.class: traefik
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+
+  # The list of hostnames to be covered with this ingress record.
   hosts:
-    - host: izmir.guven.uk
+    - host: ollama.local
       paths:
-        - path: /ollama
+        - path: /
           pathType: Prefix
 
   # --  The tls configuration for hostnames to be covered with this ingress record.
