@@ -150,7 +150,7 @@ service:
 # Configure the ingress resource that allows you to access the
 ingress:
   enabled: true
-  className: "traefik"
+  className: "traefik-external"
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     #traefik.ingress.kubernetes.io/router.middlewares: "ollama-strip-prefix@kubernetescrd"
