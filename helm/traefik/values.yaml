@@ -664,7 +664,13 @@ ports:
   hazelcast:
     port: 5701
     protocol: TCP
-    expose: true  
+    expose: true 
+
+  ollama:
+    port: 11434
+    protocol: TCP
+    expose: true 
+     
 
 
   web:
