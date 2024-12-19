@@ -184,18 +184,18 @@ resources:
   # -- Pod requests
   requests: {}
     # Memory request
-    memory: 4096Mi
+    memory: 8192Mi
 
     # CPU request
-    cpu: 10Gi
+    cpu: 14Gi
 
   # -- Pod limit
   limits: {}
     # Memory limit
-    memory: 8192Mi
+    memory: 16384Mi
 
     # CPU limit
-    cpu: 10Gi
+    cpu: 28Gi
 
 # Configure extra options for liveness probe
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
