@@ -4,8 +4,12 @@ traefik:
   ingress:
     routes:
       - kind: Rule
+        middlewares:
+          - name: ollama-strip-prefix
+            namespace: ollama
         match: Host(`izmir.guven.uk`) && PathPrefix(`/ollama`)
         services:
           - name: ollama-izmir
             port: 11434
+            pathType: Prefix
           
