@@ -182,7 +182,7 @@ ingress:
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
   # -- Pod requests
-  requests: {}
+  requests: 
     # Memory request
     memory: 8192Mi
 
@@ -190,7 +190,7 @@ resources:
     cpu: 10000m
 
   # -- Pod limit
-  limits: {}
+  limits:
     # Memory limit
     memory: 16384Mi
 
