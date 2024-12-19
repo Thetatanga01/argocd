@@ -80,14 +80,14 @@ ollama:
     #   - llama2
       #- mistral
     pull: 
-      - llama3.2
+      - llama3.2:1b
 
     # -- List of models to load in memory at container startup
     # run:
     #   - llama2
       #- mistral
     run: 
-      - llama3.2
+      - llama3.2:1b
 
   # -- Add insecure flag for pulling at container startup
   insecure: false
