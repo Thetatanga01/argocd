@@ -135,7 +135,7 @@ runtimeClassName: ""
 service:
 
   # -- Service type
-  type: NodePort
+  type: ClusterIP
 
   # -- Service port
   port: 11434
