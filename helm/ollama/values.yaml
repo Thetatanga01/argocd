@@ -182,20 +182,12 @@ ingress:
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
   # -- Pod requests
-  requests: 
-    # Memory request
-    memory: 8192Mi
-
-    # CPU request
-    cpu: 10000m
-
-  # -- Pod limit
+  requests:
+    cpu: "1000m"  # Minimum 0.5 CPU isteği
+    memory: "8Gi"
   limits:
-    # Memory limit
-    memory: 16384Mi
-
-    # CPU limit
-    cpu: 20000m
+    cpu: "2000m" # Maksimum 1 CPU kullanımı
+    memory: "16Gi"
 
 # Configure extra options for liveness probe
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
